@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <meta charset="UTF-8">
     <title>Resume</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </head>
@@ -13,8 +14,30 @@
         Name (Last name, Middle name (optional), First name): <input type="text" name="name"/> <br><hr>
         
 <!--Image-->        
-        Image : <input type = "file" accept="image/*" name="image"/> <br><hr>
+        Image : <input type = "file" accept="image/*" name="image"/>
+        <img name="image_section" src="#" alt="your image" />
         
+        
+        <script type="text/javascript">
+        function readURL(input) {
+ 
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+ 
+        reader.onload = function (e) {
+            $('#image_section').attr('src', e.target.result);
+        }
+ 
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+ 
+$("#image").change(function(){
+    readURL(this);
+});
+        </script>            
+             
+             <hr>
 <!--Contact information-->       
         Contact information : <input type="text" name="Contactinfo" value="000-0000-0000"/> <br><hr>
         
@@ -161,7 +184,10 @@
 <!--Others-->
         Others (list format)
         <hr>
-        <input type="submit" value="신청"/>
+    
+<!--Button-->
+		<input type="submit" value="전송">
+		<input type="reset" value="초기화">
     </form>
 </body>
 
