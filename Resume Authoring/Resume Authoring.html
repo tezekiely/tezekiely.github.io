@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Resume</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <form method ="get" action="Resume Result.html">
+        Name (Last name, Middle name (optional), First name): <input type="text" name="name"/> <br><hr>
+        Image : <input type = "file"/> <br><hr>
+        Contact information : <input type="text" name="Contactinfo" value="000-0000-0000"/> <br><hr>
+        Career goal/objective (one sentence) : <input type="text" name="CareerG"/> <br>
+        <hr>
+<!--Education-->
+        <p>
+        Education (itemized list format)
+        <table border="1" id="list_Edutable">
+            <colgroup>
+		      <!-- column 의 설정을 할수 있다. -->
+                <col style="width:150px;">
+                <col style="width:150px;">
+                <col style="width:150px;">
+                <col style="width:150px;">
+            </colgroup>
+
+            <thead>
+		  <tr>
+			<th>School</th>
+			<th>Major</th>
+			<th>Duration</th>
+            <th>Delete</th>
+		  </tr>
+           </thead>
+           <tbody>
+	       </tbody>
+        </table>
+
+        <h3>Add info</h3>
+        <table border="1" id="append_Edutable">
+
+            <thead>
+                <tr>
+                    <th>School</th>
+                    <th>Major</th>
+                    <th>Duration</th>
+                    <th>Add</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td><input type="text" id="School"></td>
+                    <td><input type="text" id="major"></td>
+                    <td><input type="text" id="Duration"></td>
+                    <td><button type="button" id="append_tbEdurow">추가</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <script type="text/javascript">
+            $('#append_tbEdurow').on("click", function () {
+                $('#list_Edutable').append(
+                    $('<tr>').append(
+                        $('<td>').append($('#School').val()),
+                        $('<td>').append($('#major').val()),
+                        $('<td>').append($('#Duration').val()),
+                        $('<td>').append(
+				$('<a>').prop('href', '#').addClass('delete-link').append('Delete')
+                            )
+                    )
+	           );
+            });
+
+            $('#list_Edutable').on("click", ".delete-link", function () {
+                $(this).parent().parent().remove();
+            })
+        </script>
+            
+        </p>
+        <hr>
+<!--Experience-->
+        <p>
+        Experience (itemized list format)
+        <table border="1" id="list_Exptable">
+            <colgroup>
+		      <!-- column 의 설정을 할수 있다. -->
+                <col style="width:150px;">
+                <col style="width:150px;">
+                <col style="width:150px;">
+                <col style="width:150px;">
+            </colgroup>
+
+            <thead>
+		  <tr>
+			<th>Organization</th>
+			<th>duties</th>
+			<th>duration</th>
+            <th>Delete</th>
+		  </tr>
+           </thead>
+           <tbody>
+	       </tbody>
+        </table>
+
+        <h3>Add info</h3>
+        <table border="1" id="append_Exptable">
+
+            <thead>
+                <tr>
+                    <th>Organization</th>
+                    <th>duties</th>
+                    <th>duration</th>
+                    <th>Add</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td><input type="text" id="Organization"></td>
+                    <td><input type="text" id="duties"></td>
+                    <td><input type="text" id="duration"></td>
+                    <td><button type="button" id="append_tbExprow">추가</button></td>
+                </tr>
+            </tbody>
+        </table>
+        <script type="text/javascript">
+            $('#append_tbExprow').on("click", function () {
+                $('#list_Exptable').append(
+                    $('<tr>').append(
+                        $('<td>').append($('#Organization').val()),
+                        $('<td>').append($('#duties').val()),
+                        $('<td>').append($('#duration').val()),
+                        $('<td>').append(
+				$('<a>').prop('href', '#').addClass('delete-link').append('Delete')
+                            )
+                    )
+	           );
+            });
+
+            $('#list_Exptable').on("click", ".delete-link", function () {
+                $(this).parent().parent().remove();
+            })
+        </script>
+        </p>
+        <hr>
+<!--Skills-->
+        Skills (table format)
+        Others (list format)
+        <hr>
+        <input type="submit" value="신청"/>
+    </form>
+</body>
+
+</html>
