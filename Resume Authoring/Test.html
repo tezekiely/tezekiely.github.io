@@ -1,0 +1,720 @@
+<!doctype html>
+<!--
+  Minimal Mistakes Jekyll Theme 4.9.0 by Michael Rose
+  Copyright 2013-2018 Michael Rose - mademistakes.com | @mmistakes
+  Free for personal and commercial use under the MIT license
+  https://github.com/mmistakes/minimal-mistakes/blob/master/LICENSE.txt
+-->
+<html lang="ko" class="no-js">
+  <head>
+    <meta charset="utf-8">
+
+<!-- begin SEO -->
+
+
+        
+        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+<script>
+	ex_entryNum = 1;
+	function add_experience() {
+		ex_entryNum = $('#exp_entry tbody tr').length;
+		ex_entryNum++;
+		var rowItem = "<tr>";
+
+		rowItem += "<td><input type=\"text\" id=\"org";
+		rowItem += ex_entryNum;
+		rowItem += "\" size=\"5\"/></td>";
+
+		rowItem += "<td><input type=\"text\" id=\"position";
+		rowItem += ex_entryNum;
+		rowItem += "\" size=\"5\"/></td>";
+
+		rowItem += "<td><input type=\"text\" id=\"work_des";
+		rowItem += ex_entryNum;
+		rowItem += "\" size=\"10\"style=\"height:60px;\"/></td>";
+
+		rowItem += "<td><input type=\"date\" id=\"work_start";
+		rowItem += ex_entryNum;
+		rowItem += "\" size=\"5\"/></td>";
+
+		rowItem += "<td><input type=\"date\" id=\"work_finish";
+		rowItem += ex_entryNum;
+		rowItem += "\"/></td>";
+
+		rowItem += "</tr>";
+		$('#exp_entry').append(rowItem);
+	}
+	function remove_experience(){
+		if( $('#exp_entry tbody tr').length >1){ 
+			$('#exp_entry tr:last').remove();
+			ex_entryNum -= 1;
+		}
+		else{
+			alert('No entry in a experience section!');
+		}
+	}
+</script>
+
+<script>
+	var lang_entryNum = 1;
+	function add_lang() {
+		lang_entryNum = $('#lang_entry tbody tr').length;
+		lang_entryNum++;
+		var rowItem = "<tr>";
+
+		rowItem += "<td><input type=\"text\" id=\"lang";
+		rowItem += lang_entryNum;
+		rowItem += "\" size=\"5\"/></td>";
+
+		rowItem += "<td><input type=\"text\" id=\"proficiency";
+		rowItem += lang_entryNum;
+		rowItem += "\" size=\"5\"/></td>";
+
+		rowItem += "<td><input type=\"text\" id=\"score";
+		rowItem += lang_entryNum;
+		rowItem += "\" size=\"5\"/></td>";
+
+		rowItem += "</tr>";
+		$('#lang_entry').append(rowItem);
+	}
+	function remove_lang(){
+		if( $('#lang_entry tbody tr').length >1){ 
+			$('#lang_entry tr:last').remove();
+			lang_entryNum -= 1;
+		}
+		else{
+			alert('No entry in a language section!');
+		}
+	}
+</script>
+
+<script>
+	var project_entryNum = 1;
+	function add_project() {
+		project_entryNum = $('#project_entry tbody tr').length;
+		project_entryNum++;
+		var rowItem = "<tr>";
+
+		rowItem += "<td><input type=\"text\" id=\"proj_name";
+		rowItem += project_entryNum;
+		rowItem += "\" size=\"5\"/></td>";
+
+		rowItem += "<td><input type=\"text\" id=\"proj_des";
+		rowItem += project_entryNum;
+		rowItem += "\" size=\"5\" placeholder=\"Please Describe about your projects\" style=\"height:60px;\"/></td>";
+
+		rowItem += "</tr>";
+		$('#project_entry').append(rowItem);
+	}
+	function remove_project(){
+		if( $('#project_entry tbody tr').length >1){ 
+			$('#project_entry tr:last').remove();
+			project_entryNum -= 1;
+		}
+		else{
+			alert('No entry in a language section!');
+		}
+	}
+</script>
+
+<script>
+	var education_num = 1;
+	function add_education(){
+		var master = document.getElementById("master");
+		var doctor = document.getElementById("doctor");
+
+		education_num += 1;
+
+		if(education_num == 2){
+			master.style.display = "inline-block";
+		}
+		if(education_num == 3){
+			doctor.style.display = "inline-block";
+		}
+		if(education_num >3)
+			education_num = 3;
+	}
+
+	function rem_education(){
+		var master = document.getElementById("master");
+		var doctor = document.getElementById("doctor");
+
+		education_num -= 1;
+
+		if(education_num == 2){
+			doctor.style.display = "none";
+		}
+		if(education_num == 1){
+			master.style.display = "none";
+		}
+
+		if(education_num <1)
+			education_num = 1;
+	}
+</script>
+
+<script>
+	function LoadProfile(value){
+		if(value.files && value.files[0]){
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$('#r_profile').attr('src',e.target.result);
+			}
+		}
+		reader.readAsDataURL(value.files[0]);
+	}
+</script>
+
+<script>
+	function LoadLogo1(value){
+		if(value.files && value.files[0]){
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$('#r_logo1').attr('src',e.target.result);
+			}
+		}
+		reader.readAsDataURL(value.files[0]);
+	}
+	function LoadLogo2(value){
+		if(value.files && value.files[0]){
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$('#r_logo2').attr('src',e.target.result);
+			}
+		}
+		reader.readAsDataURL(value.files[0]);
+	}
+	function LoadLogo3(value){
+		if(value.files && value.files[0]){
+			var reader = new FileReader();
+			reader.onload = function(e){
+				$('#r_logo3').attr('src',e.target.result);
+			}
+		}
+		reader.readAsDataURL(value.files[0]);
+	}
+</script>
+
+<div id="Form">
+<span style="font-size:18px; color:lightcoral"><b>You Should Fill out at least 1 of all the Entries!</b></span><br /><br />
+<!-- Basic Information -->
+<fieldset>
+    <label style="margin-bottom:10px; font-size:18px"><b>1.Basic Information:</b></label>
+    	<div>
+        	<label style="display:inline-block; margin-left:10px; margin-right: 14px"><i>First Name: </i></label>
+        	<input type="text" id="first_name" style="width:200px;" />
+        </div>
+        <div>
+        	<label style="display:inline-block; margin-left:10px; margin-right: 15.5px"><i>Last Name: </i></label>
+        	<input type="text" id="last_name" style="width:200px;" />
+    	</div>
+    	<div>
+       		<label style="display:inline-block; margin-left:10px; margin-right: 37px"><i>Contact: </i></label>
+        	<input type="tel" placeholder="000*-000*-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" id="telephone" style="width:200px;" />
+    	</div>
+		<div>
+       		<label style="display:inline-block; margin-left:10px; margin-right: 37px"><i>E-mail: </i></label>
+        	<input type="text" placeholder="writeEmail@gmail.com" id="email" style="width:200px; margin-left:7px" />
+    	</div>
+</fieldset>
+<br />
+
+
+<!-- Profile Photo -->
+<fieldset>
+    <label style="margin-bottom:10px; font-size:18px">
+		<b>2. Profile Image: </b>
+	</label>
+    <div>
+		<input type="file" id="profile" name="imgAttach" onchange="LoadProfile(this);" />
+	</div>
+</fieldset>
+<br />
+
+<!-- Career -->
+<fieldset>
+    <label style="margin-bottom:10px; font-size:18px">
+		<b>3.Career Objective: </b>
+	</label>
+    <div>
+		<input type="text" id="career" size="50" placeholder="Please write down your career/research objectives in one paragraph" style="height:80px;" />
+	</div>
+</fieldset>
+<br />
+
+<!-- Education-->
+<fieldset>
+	<legend style="font-size:18px;"><b>4.Education(at most 3)</b></legend>
+	<!-- Bachelor -->
+		<input type="button" id="edu_add" onclick="add_education();" value="Add entry" style="background-color:lightblue; color:white; margin-top:10px" />
+			<input type="button" id="edu_rem" onclick="rem_education();" value="Remove entry" style="background-color:lightcoral; color:white" />
+			<label><b>1st</b></label>
+				<table id="edu_entry1">
+					<thead>
+						<td><i>Degree</i></td>
+						<td><i>School</i></td>
+						<td><i>Major</i></td>
+						<td><i>Duration (From-To)</i></td>
+						<td></td>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" id="degree2" placeholder="bachelor" /></td>
+							<td><input type="text" id="school1" /></td>
+							<td><input type="text" id="major1" /></td>
+							<td><input type="date" id="edu_start1" /></td>
+							<td><input type="date" id="edu_finish1" /></td>
+						</tr>
+					</tbody>
+				</table>
+				<table id="edu_entry2">
+					<thead>
+						<td style="width:5px"><i>GPA(Total)</i></td>
+						<td style="width:5px"><i>GPA(Major)</i></td>
+						<td><i>Courses</i></td>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" id="gpa_total1" size="3" placeholder="4.5 scale" /></td>
+							<td><input type="text" id="gpa_major1" size="3" placeholder="4.5 scale" /></td>
+							<td><input type="text" id="courses1" placeholder="Please List out major courses you have taken" style="height:50px;" /></td>
+						</tr>
+					</tbody>
+				</table>
+		<div>
+			<label style="display:inline-block; margin-left:10px; margin-right: 10px"><i>School Logo: </i></label>
+			<input type="file" id="logo1" name="imgAttach" onchange="LoadLogo1(this);" />
+		</div>
+	<!-- Master -->
+			<div class="Master" id="master" style="display: none;">
+				<label style="margin-top:35px; "><b>2nd</b></label>
+				<table id="edu_entry1">
+					<thead>
+						<td><i>Degree</i></td>
+						<td><i>School</i></td>
+						<td><i>Major</i></td>
+						<td><i>Duration (From-To)</i></td>
+						<td></td>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" id="degree2" placeholder="master" /></td>
+							<td><input type="text" id="school2" /></td>
+							<td><input type="text" id="major2" /></td>
+							<td><input type="date" id="edu_start2" /></td>
+							<td><input type="date" id="edu_finish2" /></td>
+						</tr>
+					</tbody>
+				</table>
+				<table id="edu_entry2">
+					<thead>
+						<td style="width:5px"><i>GPA(Total)</i></td>
+						<td style="width:5px"><i>GPA(Major)</i></td>
+						<td><i>Courses</i></td>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" id="gpa_total2" size="3" placeholder="4.5 scale" /></td>
+							<td><input type="text" id="gpa_major2" size="3" placeholder="4.5 scale" /></td>
+							<td><input type="text" id="courses2" placeholder="Please List out major courses you have taken" style="height:50px;" /></td>
+						</tr>
+					</tbody>
+				</table>
+				<div>
+					<label style="display:inline-block; margin-left:10px; margin-right: 10px"><i>School Logo: </i></label>
+					<input type="file" id="logo2" name="imgAttach" onchange="LoadLogo2(this);" />
+				</div>
+			</div>
+	<!-- Doctor -->
+			<div class="Doctor" id="doctor" style="display: none;">
+			<label style="margin-top:35px; "><b>3rd</b></label>
+				<table id="edu_entry1">
+					<thead>
+						<td><i>Degree</i></td>
+						<td><i>School</i></td>
+						<td><i>Major</i></td>
+						<td><i>Duration (From-To)</i></td>
+						<td></td>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" id="degree3" placeholder="doctor" /></td>
+							<td><input type="text" id="school3" /></td>
+							<td><input type="text" id="major3" /></td>
+							<td><input type="date" id="edu_start3" /></td>
+							<td><input type="date" id="edu_finish3" /></td>
+						</tr>
+					</tbody>
+				</table>
+				<table id="edu_entry2">
+					<thead>
+						<td style="width:5px"><i>GPA(Total)</i></td>
+						<td style="width:5px"><i>GPA(Major)</i></td>
+						<td><i>Courses</i></td>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input type="text" id="gpa_total3" size="3" placeholder="4.5 scale" /></td>
+							<td><input type="text" id="gpa_major3" size="3" placeholder="4.5 scale" /></td>
+							<td><input type="text" id="courses3" placeholder="Please List out major courses you have taken" style="height:50px;" /></td>
+						</tr>
+					</tbody>
+				</table>
+				<div>
+					<label style="display:inline-block; margin-left:10px; margin-right: 10px"><i>School Logo: </i></label>
+					<input type="file" id="logo3" name="imgAttach" onchange="LoadLogo3(this);" />
+				</div>
+			</div>
+</fieldset>
+<br />
+
+
+<!-- Work Experience-->
+<fieldset>
+	<legend style="font-size:18px"><b>5.Work Experience</b></legend>
+		<input type="button" id="exp_add" onclick="add_experience();" value="Add entry" style="background-color:lightblue; color:white; margin-top:10px" />
+			<input type="button" id="exp_rem" onclick="remove_experience();" value="Remove entry" style="background-color:lightcoral; color:white" />
+				<table id="exp_entry">
+					<thead>
+						<td><i>Organization</i></td>
+						<td><i>Position</i></td>
+						<td><i>Description</i></td>
+						<td><i>Duration (From - To)</i></td>
+						<td></td>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<input type="text" id="org1" size="5" />
+							</td>
+							<td>
+								<input type="text" id="position1" size="5" />
+							</td>
+							<td>
+								<input type="text" id="work_des1" size="15" style="height:60px" />
+							</td>
+							<td>
+								<input type="date" id="work_start1" size="5" />
+							<td>
+								<input type="date" id="work_finish1" size="5" />
+							
+							</td>
+						</tr>
+					</tbody>
+				</table>
+</fieldset>
+<br />
+
+<!-- Language Skills-->
+<fieldset>
+	<legend style="font-size:18px;"><b>6.Langauge Skills</b></legend>
+		<input type="button" id="tech_add" onclick="add_lang();" value="Add entry" style="background-color:lightblue; color:white;  margin-top:10px" />
+			<input type="button" id="tech_rem" onclick="remove_lang();" value="Remove entry" style="background-color:lightcoral; color:white" />
+				<table id="lang_entry">
+					<thead>
+						<td><i>Language</i></td>
+						<td><i>Proficiency</i></td>
+						<td><i>Certificate/Score</i></td>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<input type="text" id="lang1" size="5" />
+							</td>
+							<td>
+								<input type="text" id="proficiency1" size="5" />
+							</td>
+							<td>
+								<input type="text" id="score1" size="5" placeholder="ex) TEPS: 800" />
+							</td>
+						</tr>
+					</tbody>
+				</table>
+</fieldset>
+<br />
+
+<!-- Project Lists-->
+<fieldset>
+	<legend style="font-size:18px; margin-bottom:10px"><b>7.Project Lists</b></legend>
+		<input type="button" id="project_add" onclick="add_project();" value="Add entry" style="background-color:lightblue; color:white" />
+			<input type="button" id="project_rem" onclick="remove_project();" value="Remove entry" style="background-color:lightcoral; color:white" />
+				<table id="project_entry">
+					<thead>
+						<td><i>Name</i></td>
+						<td><i>Description</i></td>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<input type="text" id="proj_name1" size="5" />
+							</td>
+							<td>
+							<input type="text" id="proj_des1" placeholder="Please Describe about your projects" style="height:60px;" /></td>
+						</tr>
+					</tbody>
+				</table>
+</fieldset>
+<br />
+
+<!-- Style Lists-->
+<fieldset>
+	<legend style="font-size:18px; margin-bottom:10px"><b>8.Styles</b></legend>
+		<div>
+        	<label style="display:inline-block; margin-left:10px; margin-right: 14px"><i>Background colour: </i></label>
+        	<input type="color" id="bg_color" value="#ffffff" size="5" style="width:50px;" />
+		</div>
+		<div>
+        	<label style="display:inline-block; margin-left:10px; margin-right: 67px"><i>Font colour: </i></label>
+        	<input type="color" id="font_color" size="5" style="width:50px;" />
+		</div>
+		<div>
+        	<label style="display:inline-block; margin-left:10px; margin-right: 80px"><i>Font size: </i></label>
+        	<input type="number" id="font_size" value="18" size="5" style="width:200px;" />
+		</div>
+</fieldset>
+
+<input type="button" id="submit" onclick="submit();" value="submit" style="background-color:dimgray; color:white; margin-top:30px; padding:12px; font-size:20px" />
+<br /><br />
+</div>
+
+<script>
+function submit() {
+	var resume = document.getElementById("resume");
+	var form = document.getElementById("Form");
+	
+	//Basic Information
+	var r_first_name = document.getElementById("r_first_name");
+	var r_last_name  = document.getElementById("r_last_name");
+	var r_contact    = document.getElementById("r_telephone");
+	var r_email    = document.getElementById("r_email");//값 전달 잘 됨.
+
+	r_first_name.innerHTML = document.getElementById("first_name").value;
+	r_last_name.innerHTML = document.getElementById("last_name").value;
+	r_contact.innerHTML = document.getElementById("telephone").value;
+	r_email.innerHTML = document.getElementById("email").value;
+
+	//Career
+	var career = document.getElementById("career").value;
+	document.getElementById("r_career").innerHTML = career; //Done
+
+	//Education
+	var i;
+	for(i = 0; i < education_num; i++){
+		var edu = document.getElementById("r_edu"+(i+1));
+		edu.style.display = "inline";
+		var r_school = document.getElementById("r_school"+(i+1));
+		var r_major  = document.getElementById("r_major"+(i+1));
+		var r_edu_start  = document.getElementById("r_edu_start"+(i+1));
+		var r_edu_finish = document.getElementById("r_edu_finish"+(i+1));
+		var r_gpa_total = document.getElementById("r_gpa_total"+(i+1));
+		var r_gpa_major = document.getElementById("r_gpa_major"+(i+1));
+		var r_courses = document.getElementById("r_courses"+(i+1));
+
+		r_school.innerHTML = document.getElementById("school"+(i+1)).value;
+		r_major.innerHTML = document.getElementById("major"+(i+1)).value;
+		r_edu_start.innerHTML = document.getElementById("edu_start"+(i+1)).value;
+		r_edu_finish.innerHTML = document.getElementById("edu_finish"+(i+1)).value;
+		r_gpa_total.innerHTML = document.getElementById("gpa_total"+(i+1)).value;
+		r_gpa_major.innerHTML = document.getElementById("gpa_major"+(i+1)).value;
+		r_courses.innerHTML = document.getElementById("courses"+(i+1)).value;
+	}
+
+	//Work
+	var i;
+	for(i = 0; i < ex_entryNum; i++){
+		var work = document.getElementById("r_work"+(i+1));
+		work.style.display = "inline";
+		var r_org = document.getElementById("r_org"+(i+1));
+		var r_position = document.getElementById("r_position"+(i+1));
+		var r_work_description = document.getElementById("r_work_des"+(i+1));
+		var r_work_start = document.getElementById("r_work_start"+(i+1));
+		var r_work_finish = document.getElementById("r_work_finish"+(i+1));
+
+		r_org.innerHTML = document.getElementById("org"+(i+1)).value;
+		r_position.innerHTML = document.getElementById("position"+(i+1)).value;
+		r_work_description.innerHTML = document.getElementById("work_des"+(i+1)).value;
+		r_work_start.innerHTML = document.getElementById("work_start"+(i+1)).value;
+		r_work_finish.innerHTML = document.getElementById("work_finish"+(i+1)).value;
+	}  //Done
+
+	//Language
+	var i;
+	for(i = 0; i < lang_entryNum; i++){
+		var lang = document.getElementById("language"+(i+1));
+		lang.style.display = "inline";
+		var r_lang = document.getElementById("r_lang"+(i+1));
+		var r_prof = document.getElementById("r_proficiency"+(i+1));
+		var r_score = document.getElementById("r_score"+(i+1));
+		r_lang.innerHTML = document.getElementById("lang"+(i+1)).value;
+		r_prof.innerHTML = document.getElementById("proficiency"+(i+1)).value;
+		r_score.innerHTML = document.getElementById("score"+(i+1)).value;
+	} //Done
+
+	//Projects
+	var i;
+	for(i = 0; i < project_entryNum; i++){
+		var r_proj = document.getElementById("project"+(i+1));
+		r_proj.style.display = "inline";
+		var r_proj_name = document.getElementById("r_proj_name"+(i+1));
+		var r_proj_des = document.getElementById("r_proj_des"+(i+1));
+		r_proj_name.innerHTML = document.getElementById("proj_name"+(i+1)).value;
+		r_proj_des.innerHTML = document.getElementById("proj_des"+(i+1)).value;
+	} //Done
+
+	//Styles
+	var bg_color = document.getElementById("bg_color").value;
+	var font_color = document.getElementById("font_color").value;
+	var font_size = document.getElementById("font_size").value;
+	resume.style.display = "inline-block";
+	resume.style.backgroundColor = bg_color;
+	resume.style.color = font_color;
+	resume.style.fontsize = font_size + "px";
+	form.style.display = "none";
+}
+</script>
+
+<div id="resume" style="display:none; width:100%">
+	<!-- Basic Information -->
+	<h1 id="Basic Information">Basic information</h1>
+	<p style="width:400px">
+	<img id="r_profile" src="" alt="photo" width="120" height="100" align="left" style="margin-right:40px; margin-top:20px;float:left" /><br />
+	<strong><span id="r_last_name" style="font-size:20px;display:inline;"></span> &nbsp; <span id="r_first_name" style="font-size:20px;display:inline;"></span></strong><br /><br />
+	<b>Contact: </b> &nbsp; <span id="r_telephone"></span><br />
+	<b>E-mail: </b> &nbsp; <span id="r_email"></span><br /><br /><br /><br /><br /><br /><br />
+	</p>
+	<!-- Career -->
+	<h1 id="research-interests">Career Objective</h1>
+	<p><span id="r_career"></span><br /><br /><br /><br /></p> <!-- Career Finished -->
+	<!-- Education -->
+	<h1 id="education">Education</h1><p><br />
+	<div id="r_edu1" style="width:400px; display:none">
+		<img id="r_logo1" src="" alt="photo" width="90" height="90" align="left" style="margin-right:40px" />
+		<strong><u><span id="r_school1"></span></u><br />
+		</strong>Bachelor&nbsp;Degree&nbsp;of <strong><span id="r_major1" style="display:inline-block"></span></strong><br />
+		<span id="r_edu_start1"></span> - <span id="r_edu_finish1"></span><br /><br />
+		<strong>GPA:</strong> <strong><span id="r_gpa_total1"></span>/4.5</strong> <span style="margin-right:10px"> </span><strong><span id="r_gpa_major1"></span>/4.5(Major)</strong><br /><br />
+		<strong>Courses:</strong><br />
+		<span id="r_courses1"></span><br /><br /><br />
+	</div>
+	<div id="r_edu2" style="width:400px; display:none">
+		<img id="r_logo2" src="" alt="photo" width="90" height="90" align="left" style="margin-right:40px" />
+		<strong><u><span id="r_school2"></span></u><br />
+		</strong>Master&nbsp;Degree&nbsp;of <strong><span id="r_major2" style="display:inline-block"></span></strong><br />
+		<span id="r_edu_start2"></span> - <span id="r_edu_finish2"></span><br /><br />
+		<strong>GPA:</strong> <strong><span id="r_gpa_total2"></span>/4.5</strong> <span style="margin-right:10px"> </span><strong><span id="r_gpa_major2"></span>/4.5(Major)</strong><br /><br />
+		<strong>Courses:</strong><br />
+		<span id="r_courses2"></span><br /><br /><br />
+	</div>
+	<div id="r_edu3" style="width:400px; display:none">
+		<img id="r_logo3" src="" alt="photo" width="90" height="90" align="left" style="margin-right:40px" />
+		<strong><u><span id="r_school3"></span></u><br />
+		</strong>Doctor&nbsp;Degree&nbsp;of <strong><span id="r_major3" style="display:inline-block"></span></strong><br />
+		<span id="r_edu_start3"></span> - <span id="r_edu_finish3"></span><br /><br />
+		<strong>GPA:</strong> <strong><span id="r_gpa_total3"></span>/4.5</strong> <span style="margin-right:10px"> </span><strong><span id="r_gpa_major3"></span>/4.5(Major)</strong><br /><br />
+		<strong>Courses:</strong><br />
+		<span id="r_courses3"></span><br /><br /><br />
+	</div>
+	<br />
+	<!-- Work Experience -->
+	<h1 id="works">Work Experience</h1><p>
+	<div id="r_work1" style="display:none"><p>
+		<strong><span id="r_position1"></span></strong> at <span style="color:silver"><strong><span id="r_org1"></span></strong></span><br />
+		<span id="r_work_start1"></span> - <span id="r_work_finish1"></span></p>
+		<span id="r_work_des1"></span><br /><br /><br />
+	</div>
+	<div id="r_work2" style="display:none"><p>
+		<strong><span id="r_position2"></span></strong> at <span style="color:silver"><strong><span id="r_org2"></span></strong></span><br />
+		<span id="r_work_start2"></span> - <span id="r_work_finish2"></span></p>
+		<span id="r_work_des2"></span><br /><br /><br />
+	</div>
+	<div id="r_work3" style="display:none"><p>
+		<strong><span id="r_position3"></span></strong> at <span style="color:silver"><strong><span id="r_org3"></span></strong></span><br />
+		<span id="r_work_start3"></span> - <span id="r_work_finish3"></span></p>
+		<span id="r_work_des3"></span><br /><br /><br />
+	</div>
+	<div id="r_work4" style="display:none"><p>
+		<strong><span id="r_position4"></span></strong> at <span style="color:silver"><strong><span id="r_org4"></span></strong></span><br />
+		<span id="r_work_start4"></span> - <span id="r_work_finish4"></span></p>
+		<span id="r_work_des4"></span><br /><br /><br />
+	</div>
+	<div id="r_work5" style="display:none"><p>
+		<strong><span id="r_position5"></span></strong> at <span style="color:silver"><strong><span id="r_org5"></span></strong></span><br />
+		<span id="r_work_start5"></span> - <span id="r_work_finish5"></span></p>
+		<span id="r_work_des5"></span><br /><br /><br />
+	</div>
+	<br />
+	<!-- Language -->
+	<h1 id="languages">Language Skills</h1><p>
+	<div id="language1" style="display:none">
+		<strong><span id="r_lang1"></span></strong> &nbsp;
+		<span id="r_proficiency1"></span><br />
+		<span id="r_score1"></span><br /><br />
+	</div>
+	<div id="language2" style="display:none">
+		<strong><span id="r_lang2"></span></strong> &nbsp;
+		<span id="r_proficiency2"></span><br />
+		<span id="r_score2"></span><br /><br />
+	</div>
+	<div id="language3" style="display:none">
+		<strong><span id="r_lang3"></span></strong> &nbsp;
+		<span id="r_proficiency3"></span><br />
+		<span id="r_score3"></span><br /><br />
+	</div>
+	<div id="language4" style="display:none">
+		<strong><span id="r_lang4"></span></strong> &nbsp;
+		<span id="r_proficiency4"></span><br />
+		<span id="r_score4"></span><br /><br />
+	</div>
+	<div id="language5" style="display:none">
+		<strong><span id="r_lang5"></span></strong> &nbsp;
+		<span id="r_proficiency5"></span><br />
+		<span id="r_score5"></span><br /><br />
+	</div>
+	<br /><br />
+	<!-- Projects -->
+	<h1 id="projects">Projects</h1><p>
+	<div id="project1" style="display:none">
+		<strong><span id="r_proj_name1"></span></strong><br /><br />
+		<span id="r_proj_des1"></span><br /><br /><br />
+	</div>
+	<div id="project2" style="display:none">
+		<strong><span id="r_proj_name2"></span></strong><br /><br />
+		<span id="r_proj_des2"></span><br /><br /><br />
+	</div>
+	<div id="project3" style="display:none">
+		<strong><span id="r_proj_name3"></span></strong><br /><br />
+		<span id="r_proj_des3"></span><br /><br /><br />
+	</div>
+	<div id="project3" style="display:none">
+		<strong><span id="r_proj_name3"></span></strong><br /><br />
+		<span id="r_proj_des3"></span><br /><br /><br />
+	</div>
+	<div id="project4" style="display:none">
+		<strong><span id="r_proj_name4"></span></strong><br /><br />
+		<span id="r_proj_des4"></span><br /><br /><br />
+	</div>
+	<div id="project5" style="display:none">
+		<strong><span id="r_proj_name5"></span></strong><br /><br />
+		<span id="r_proj_des5"></span><br /><br /><br />
+	</div>
+
+      <footer class="page__meta">
+        
+        
+  
+
+
+  
+  
+  
+
+ 
+
+
+  
+
+
+
+  </body>
+</html>
