@@ -1,0 +1,69 @@
+<!Doctype html>
+<html>
+<head>
+    <style>
+        div {
+        border: 2px solid;
+        padding: 20px; 
+        width: 300px;
+        resize: both;
+        overflow: auto;
+        }
+        
+        #c{
+            border:1px solid black; resize: both;
+        }
+    </style>
+</head>
+    <body style="margin: 0;">
+        <canvas
+                id="c"
+                width="200"
+                height="200"
+                ondrag="resize()"
+        ></canvas>
+        
+        <div> text box</div>
+ 
+  <script>
+    // Get canvas element and its context
+    var canvas = document.getElementById('c')
+    var ctx = canvas.getContext('2d');
+ 
+    // Button position and dimensions
+    var buttonX = 70;
+    var buttonY = 80;
+    var buttonW = 60;
+    var buttonH = 30;
+ 
+    // Render button
+    ctx.fillStyle = 'red';
+    ctx.fillRect(buttonX, buttonY, buttonW, buttonH);
+ 
+    // Add event listener to canvas element
+    canvas.addEventListener('click', function(event) {
+      // Control that click event occurred within position of button
+      // NOTE: This assumes canvas is positioned at top left corner 
+      if (
+        event.x > buttonX && 
+        event.x < buttonX + buttonW &&
+        event.y > buttonY && 
+        event.y < buttonY + buttonH
+      ) {
+        // Executes if button was clicked!
+        alert('Button was clicked!');
+      }
+    });
+      
+      
+    function resize()
+            {
+                resize_X=event.x;
+                resize_Y=event.y;
+                event.srcElement.width=resize_X;
+                event.srcElement.height=resize_Y;
+            }
+      
+  </script>
+</body>
+</html>

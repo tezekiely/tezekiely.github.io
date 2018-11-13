@@ -1,0 +1,30 @@
+<!Doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title> 도형그리기></title>
+    <Script>
+    var canvas, context;
+        
+    canvas = document.getElementById("window");
+    context=canvas.getContext("2d");
+    
+    context.fillStyle="#FF0000";
+    context.fillRect(200,200,100,100);
+    
+    context.clearRect(40,40,60,60);
+    
+    context.strokeStyle="green";
+    context.strokeRect(45,45,50,50);
+    }
+    </Script>
+    <style>
+    #window{
+    border:1px solid black
+        }
+    </style>
+    </head>
+    <body>
+        <canvas id="window" width="600" height="600"></canvas>
+    </body>
+</html>
