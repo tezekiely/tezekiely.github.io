@@ -1,30 +1,134 @@
-<!Doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <title> 도형그리기></title>
-    <Script>
-    var canvas, context;
+<title> hw 4-1 </title>
+</head>
+<body>
+  
+    <input type="button" value="winodw_create" onclick="create_window(30, 30, 200, 150, 'skyblue', 'my_window')">
         
-    canvas = document.getElementById("window");
-    context=canvas.getContext("2d");
+    <input type="button" value="text_create" onclick="create_textbox(300, 50, 200, 50, 'gothic', 30, 'lightyellow', 'my_text_box')">
     
-    context.fillStyle="#FF0000";
-    context.fillRect(200,200,100,100);
+    <input type="button" value="button_create" onclick="create_button(30, 300, 160, 100, 'my_button')">
     
-    context.clearRect(40,40,60,60);
+    <input type="button" value="menu_create" onclick="create_menu(300, 300, 'menu', 3, 30, 'lightgreen')">
+        
+    <p></p>
     
-    context.strokeStyle="green";
-    context.strokeRect(45,45,50,50);
+    <canvas id="canvas" width="1000" height="650"></canvas>
+    
+<script type="text/javascript">
+    
+var canvas = document.getElementById("canvas");
+var context = canvas.getContext("2d");
+    
+
+function create_window(x, y, width, height, color, title){
+    
+    /*window*/
+    context.fillStyle=color;
+    context.fillRect(x, y, width, height);
+    context.strokeStyle = "black";
+    context.strokeRect(x, y, width, height);
+
+    /*Hide button*/
+    context.beginPath();
+    context.rect(x+width-(width*0.22),y+height-(height*0.13), width*0.1, height*0.1);
+    context.moveTo(x+width-(width*0.20),y+height-(height*0.12));
+    context.lineTo(x+width-(width*0.14),y+height-(height*0.04));
+    context.moveTo(x+width-(width*0.14),y+height-(height*0.12));
+    context.lineTo(x+width-(width*0.20),y+height-(height*0.04));
+    context.stroke();
+    context.closePath();
+    
+    /*Remove button*/
+    context.beginPath();
+    context.rect(x+width-(width*0.12),y+height-(height*0.13), width*0.1, height*0.1);
+    context.moveTo(x+width-(width*0.10),y+height-(height*0.08));
+    context.lineTo(x+width-(width*0.04),y+height-(height*0.08));
+    context.stroke();
+    context.closePath();
+    
+    /*Title area*/
+    context.beginPath();
+    context.moveTo(x,y+height*0.3);
+    context.lineTo(x+width,y+height*0.3);
+    context.stroke();
+    context.closePath();
+    
+    context.font = "30px gothic"
+    context.fillStyle="black";
+    context.fillText(title, x+width*0.1, y+height*0.2);
+  }
+    
+    
+function create_textbox(x, y, width, height, font, size, color, text){
+
+    /*text box area*/
+    context.beginPath();
+    context.fillStyle=color;
+    context.fillRect(x, y, width, height);
+    context.strokeStyle = "black";
+    context.strokeRect(x, y, width, height);
+    context.closePath();
+
+    context.fillStyle="black";
+    context.font=size.toString()+'px '+font;
+    context.fillText(text, x + width*0.05, y + height*0.65);
+      
+  }
+    
+    
+function create_button(x, y, width, heigth, label){
+    
+    /*button area*/
+    roundRect(context, x, y, width, heigth, 20);
+
+    context.font='30px gothic';
+    context.fillStyle="black";
+    context.fillText(label, x+width*0.05, y+heigth*0.6);
+    
+    /*둥근사각형 그리기*/
+    function roundRect(context, x, y, width, height, radius) {
+        context.beginPath();
+        context.moveTo(x + radius, y);
+		context.arcTo((x+width), y, (x+width), (y+height), radius);
+		context.arcTo((x+width), (y+height), x, (y+height), radius);
+		context.arcTo(x, (y+height), x, y, radius);
+		context.arcTo(x, y, (x+radius), y, radius);
+		context.stroke();
+		}
+
+  }
+
+
+function create_menu(x, y, title, count, size, color){
+
+    /*menu title area*/
+    context.beginPath();
+    context.fillStyle=color;
+    context.fillRect(x, y, 200+size*2, 2*size);
+    context.strokeStyle = "black";
+    context.strokeRect(x, y, 200+size*2, 2*size);
+
+    context.font=size.toString()+'px gothic'
+    context.fillStyle="black";
+    context.fillText(title, x+size, y+size*1.3);
+
+    /*menu item area*/
+    for(i=1; i<=count; i++){
+        context.beginPath();
+        context.fillStyle=color;
+        context.fillRect(x+size*0.5, y+2*size*i, 200+size*2, 2*size);
+        context.strokeStyle = "black";
+        context.strokeRect(x+size*0.5, y+2*size*i, 200+size*2, 2*size);
+        context.closePath();
+        
+        context.font=size.toString()+'px gothic'
+        context.fillStyle="black";
+        context.fillText('menu'+i, x+size*1.5, y+2*size*i+size*1.3);
     }
-    </Script>
-    <style>
-    #window{
-    border:1px solid black
-        }
-    </style>
-    </head>
-    <body>
-        <canvas id="window" width="600" height="600"></canvas>
-    </body>
+  }
+</script>
+</body>
 </html>
