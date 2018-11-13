@@ -13,6 +13,10 @@
         #c{
             border:1px solid black; resize: both;
         }
+        
+        #window{
+            border:1px solid black; resize: both;
+        }
     </style>
 </head>
     <body style="margin: 0;">
@@ -20,7 +24,12 @@
                 id="c"
                 width="200"
                 height="200"
-                ondrag="resize()"
+        ></canvas>
+        
+        <canvas
+                id="window"
+                width="200"
+                height="200"
         ></canvas>
         
         <div> text box</div>
@@ -55,14 +64,8 @@
       }
     });
       
-      
-    function resize()
-            {
-                resize_X=event.x;
-                resize_Y=event.y;
-                event.srcElement.width=resize_X;
-                event.srcElement.height=resize_Y;
-            }
+    var canvas2 = document.getElementByID('window')
+    var ctx2 = canvas.getContext('2d');
       
   </script>
 </body>
